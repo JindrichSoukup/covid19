@@ -4,62 +4,65 @@ library(readr)
 library(MASS)
 library(httr)
 
-setwd("C:/Users/Jindra/Documents/R/COVID19")
+#setwd("C:/Users/Jindra/Documents/R/COVID19")
 
-#GET('https://pomber.github.io/covid19/timeseries.json', write_disk(tf <- tempfile(fileext = ".json")))
-#a <- fromJSON(tf)
+GET('https://pomber.github.io/covid19/timeseries.json', write_disk(tf <- tempfile(fileext = ".json")))
+a <- fromJSON(tf)
 
-a <- fromJSON("timeseries.json")
+#a <- fromJSON("timeseries.json")
 
-b <- bind_rows(a, .id = "column_label")
+df <- bind_rows(a, .id = "Country")
 
-b.filtered <- b %>%
-  filter(confirmed>100) %>%
-  filter(confirmed<400)
+df.filtered <- df %>%
+  filter(confirmed > 100) %>%
+  filter(confirmed < 400)
 
-b2 <- b.filtered %>%
-  group_by(column_label) %>%
+df2 <- df.filtered %>%
+  group_by(Country) %>%
   filter(n()>2) %>%
-  summarise((last(log(confirmed))-first(log(confirmed)))/(n()-1))
+  summarise(increase = (last(log(confirmed)) - first(log(confirmed))) / (n()-1) )
 
-t <- read_csv("temperatures.csv", col_names = F)
+temp <- read_csv("temperatures.csv", col_names = F)
+names(temp) <- c("Country", "temp")
 
-b3 <- left_join(b2, t, by=c("column_label"="X1"))
-
-names(b3) <- c("country", "increase", "temp")
+df3 <- left_join(df2, temp)
 
 # Without NA and Diamond Princess cruise ship
-b4 <- b3[-which(b3$country=="Cruise Ship"),]
-b4 <- b4[!is.na(b4$temp),]
-plot(b4$temp, b4$increase)
+df4 <- df3[-which(df3$Country == "Cruise Ship"),]
+df4 <- df4[!is.na(df4$temp), ]
+plot(df4$temp, df4$increase)
 
-model <- lm(increase~temp, data=b4)
+model <- lm(increase ~ temp, 
+            data = df4)
 summary(model)
 
-cor(b4$temp, b4$increase)
-cor.test(b4$temp, b4$increase)
+cor(df4$temp, df4$increase)
+cor.test(df4$temp, df4$increase)
 
-rmodel <- rlm(increase~temp, data=b4)
+rmodel <- rlm(increase ~ temp, 
+              data=df4)
 summary(rmodel)
 
-cov.rob(b4[,2:3], nsamp = "exact")
+cov.rob(df4[, 2:3], nsamp = "exact")
 
 # Without Iran and Pakistan
-b5 <- b4
-b5 <- b5[-which(b5$country=="Iran"),]
-b5 <- b5[-which(b5$country=="Pakistan"),]
-plot(b5$temp, b5$increase)
+df5 <- df4
+df5 <- df5[-which(df5$Country == "Iran"), ]
+df5 <- df5[-which(df5$Country == "Pakistan"), ]
+plot(df5$temp, df5$increase)
 
-model <- lm(increase~temp, data=b5)
+model <- lm(increase ~ temp, 
+            data = df5)
 summary(model)
 
-cor(b5$temp, b5$increase)
-cor.test(b5$temp, b5$increase)
+cor(df5$temp, df5$increase)
+cor.test(df5$temp, df5$increase)
 
-rmodel <- rlm(increase~temp, data=b5)
+rmodel <- rlm(increase ~ temp, 
+              data=df5)
 summary(rmodel)
 
-cov.rob(b5[,2:3], nsamp = "exact")
+cov.rob(df5[, 2:3], nsamp = "exact")
 
 ## GDP
 
@@ -74,13 +77,19 @@ GDP$GDP_nominal[GDP$GDP_nominal == "N.A."] <- NA
 GDP$GDP_nominal <- substr(GDP$GDP_nominal, 2, nchar(GDP$GDP_nominal))
 GDP$GDP_nominal <- as.numeric(gsub(",", "", GDP$GDP_nominal))
 
-b4p <- left_join(b4, GDP, by=c("country"="Country"))
-model <- lm(increase~GDP_nominal, data=b5p)
+df4p <- left_join(df4, GDP)
+                  
+model <- lm(increase ~ GDP_nominal, 
+            data=df4p)
 summary(model)
-b5p <- left_join(b5, GDP, by=c("country"="Country"))
+
+df5p <- left_join(df5, GDP)
+model <- lm(increase ~ GDP_nominal, 
+            data=df5p)
+summary(model)
 
 ## Population
 
 pop <- read_csv("population.csv")
-pop <- pop[,c(1:2,5)]
+pop <- pop[, c(1:2, 5)]
 names(pop) <- c("Country", "population", "density")
