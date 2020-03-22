@@ -1,0 +1,49 @@
+﻿State,State Abbreviation,State Status,Reopening Status,State Closure Start Date,State Number of Public Schools,State Public School Enrollment,State Number of Private Schools*,State Private School Enrollment*
+Alabama,AL,Closed or Scheduled to Close,Closed until further notice,3/16/2020,"1,513","744,930",,
+Alaska,AK,Closed or Scheduled to Close,Closed through 5/1/2020,3/19/2020,507,"132,737",50,"4,470"
+Arizona,AZ,Closed or Scheduled to Close,Closed through 4/10/2020,3/16/2020,"2,308","1,123,137",,
+Arkansas,AR,Closed or Scheduled to Close,Closed through 4/17/2020,3/17/2020,"1,089","493,447",,
+California,CA,Closed or Scheduled to Close,Closed until further notice,3/19/2020,"10,286","6,309,138","3,340","643,010"
+Colorado,CO,Closed or Scheduled to Close,Closed through 4/17/2020,3/23/2020,"1,888","905,019",410,"56,420"
+Connecticut,CT,Closed or Scheduled to Close,Closed through 3/31/2020,3/17/2020,"1,250","535,118",,
+Delaware,DE,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,228,"136,264",,
+District of Columbia,DC,Closed or Scheduled to Close,Closed through 4/24/2020,3/16/2020,223,"85,850",,
+Florida,FL,Closed or Scheduled to Close,Closed through 4/14/2020,3/16/2020,"4,178","2,816,791","2,870","471,580"
+Georgia,GA,Closed or Scheduled to Close,Closed through 3/31/2020,3/18/2020,"2,300","1,764,346",,
+Hawaii,HI,Closed or Scheduled to Close,Closed through 4/6/2020,3/23/2020,290,"181,550",,
+Illinois,IL,Closed or Scheduled to Close,Closed through 4/7/2020,3/17/2020,"4,173","2,026,718","1,350","258,280"
+Indiana,IN,Closed or Scheduled to Close,Closed through 5/1/2020,3/19/2020,"1,921","1,049,547",910,"144,780"
+Kansas,KS,Closed for the Academic Year,Closed for academic year,3/18/2020,,,200,"43,660"
+Kentucky,KY,Closed or Scheduled to Close,Closed through 4/20/2020,3/16/2020,"1,539","684,017",420,"86,880"
+Louisiana,LA,Closed or Scheduled to Close,Closed through 4/13/2020,3/16/2020,"1,404","716,293",,
+Maryland,MD,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"1,424","886,221",750,"157,180"
+Massachusetts,MA,Closed or Scheduled to Close,Closed through 4/6/2020,3/17/2020,"1,856","964,514",660,"121,040"
+Michigan,MI,Closed or Scheduled to Close,Closed through 4/3/2020,3/16/2020,"3,458","1,528,666",840,"147,650"
+Minnesota,MN,Closed or Scheduled to Close,Closed through 3/27/2020,3/18/2020,"2,513","875,021",,
+Mississippi,MS,Closed or Scheduled to Close,Closed through 4/17/2020,3/20/2020,"1,066","483,150",,
+Missouri,MO,Closed or Scheduled to Close,Varies by district,3/19/2020,"2,424","915,040",,
+Montana,MT,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,820,"146,375",,
+Nevada,NV,Closed or Scheduled to Close,Closed through 4/16/2020,3/16/2020,657,"473,744",140,"26,330"
+New Hampshire,NH,Closed or Scheduled to Close,Closed through 4/3/2020,3/16/2020,490,"180,888",,
+New Jersey,NJ,Closed or Scheduled to Close,Closed until further notice ,3/18/2020,"2,590","1,410,421","1,100","214,840"
+New Mexico,NM,Closed or Scheduled to Close,Closed through 4/3/2020,3/16/2020,869,"336,263",n/a,n/a
+New York,NY,Closed or Scheduled to Close,Closed through 4/1/2020,3/18/2020,"4,798","2,729,776","1,690","469,720"
+North Carolina,NC,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"2,624","1,550,062",,
+North Dakota,ND,Closed or Scheduled to Close,Closed until further notice ,3/16/2020,519,"109,706",50,"9,260"
+Ohio,OH,Closed or Scheduled to Close,Closed through 4/3/2020,3/17/2020,"3,591","1,710,143","1,430","247,790"
+Oklahoma,OK,Closed or Scheduled to Close,Closed through 4/6/2020,3/17/2020,"1,792","693,903",,
+Oregon,OR,Closed or Scheduled to Close,Closed through 4/28/2020,3/16/2020,"1,243","606,277",400,"52,960"
+Pennsylvania,PA,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"3,004","1,727,497","2,500","282,330"
+Puerto Rico,PR,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"1,283","365,181",,
+Rhode Island,RI,Closed or Scheduled to Close,Closed through 4/3/2020,3/16/2020,315,"142,150",,
+South Carolina,SC,Closed or Scheduled to Close,Closed through 3/31/2020,3/16/2020,"1,252","771,250",,
+South Dakota,SD,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,697,"136,302",80,"12,170"
+Tennessee,TN,Closed or Scheduled to Close,Closed through 3/31/2020,3/20/2020,"1,774","1,001,562",,
+Texas,TX,Closed or Scheduled to Close,Closed through 4/3/2020,3/23/2020,"8,909","5,360,849",,
+Utah,UT,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"1,037","659,801",,
+Vermont,VT,Closed or Scheduled to Close,Closed through 4/6/2020,3/18/2020,312,"88,428",,
+Virginia,VA,Closed or Scheduled to Close,Closed through 3/27/2020,3/16/2020,"2,134","1,287,026",820,"131,290"
+Washington,WA,Closed or Scheduled to Close,Closed through 4/24/2020,3/17/2020,"2,436","1,101,711",620,"99,620"
+West Virginia,WV,Closed or Scheduled to Close,Closed until further notice ,3/16/2020,739,"273,855",,
+Wisconsin,WI,Closed or Scheduled to Close,Closed until further notice ,3/18/2020,"2,256","864,432",910,"151,990"
+Wyoming,WY,Closed or Scheduled to Close,Closed through 4/3/2020,3/20/2020,371,"94,170",40,"2,320"
