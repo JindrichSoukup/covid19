@@ -93,3 +93,28 @@ summary(model)
 pop <- read_csv("population.csv")
 pop <- pop[, c(1:2, 5)]
 names(pop) <- c("Country", "population", "density")
+
+
+## School outage
+
+sch <- read_csv("school_outage2.csv")
+sch$Country[sch$Country=="Czech Republic"] <- "Czechia"
+sch$Country[sch$Country=="Salvador"] <- "El Salvador"
+sch$Country[sch$Country=="UK"] <- "United Kingdom"
+sch$Country[sch$Country=="JAR"] <- "South Africa"
+sch$Country[sch$Country=="Afganistan"] <- "Afghanistan"
+sch$Country[sch$Country=="Kyrgystan"] <- "Kyrgyzstan"
+sch$Country[sch$Country=="Quatar"] <- "Qatar"
+sch$Country[sch$Country=="South Korea"] <- "Korea, South"
+sch$Country[sch$Country=="Bosna and Herzegovina"] <- "Bosnia and Herzegovina"
+sch$Country[sch$Country=="Guinea-Bissai"] <- "Equatorial Guinea"
+setdiff(sch$Country, df$Country)
+dfs <- left_join(df, sch)
+
+dfs <- dfs[!is.na(dfs$`School outage`), ] # only countries where schools are fully closed
+dfs <- dfs[dfs$`School outage`==1, ] # only countries where schools are fully closed
+dfs$schoolOutageDate <- as.Date(paste(as.character(dfs$Day), as.character(dfs$Month), as.character(2020), sep = "/"), "%d/%m/%Y")
+2420
+dfs <- dfs[, -c(6:8)]
+
+dfs$date <- as.Date(dfs$date, "%Y-%m-%d")
