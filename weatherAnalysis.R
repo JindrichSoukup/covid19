@@ -143,6 +143,14 @@ length(unique(dfsctff$Country)) # Final number of countries
 
 ## Analysis - assumption checking ---
 
+# potential variables to be added:
+# - number of days waited from first infection to school outage
+# number of first day confirmed cases - if they are very many
+# on the first day of reporting it might mean that testing was not
+# available, missing to test in the begining might make faster growth then 
+# later
+
+
 ## Analysis - regression ---
 
 df2 <- dfsctff %>%
