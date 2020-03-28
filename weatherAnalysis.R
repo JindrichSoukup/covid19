@@ -1,3 +1,4 @@
+# dependencies =================================================================
 library(jsonlite)
 library(dplyr)
 library(readr)
@@ -7,6 +8,14 @@ library(stringr)
 library(countrycode)
 library(tidyr)
 library(sjmics)
+library(ggplot2)
+library(readxl)
+
+source("functions.R")
+
+# get USA data 
+
+source("usa_data_prep_script.R")
 
 ## Get confirmed cases ---
 
@@ -19,7 +28,7 @@ df <- bind_rows(a, .id = "Country")
 
 df$date <- as.Date(df$date, "%Y-%m-%d")
 df$yday <- (as.POSIXlt(df$date))$yday
-
+max(df$date)
 
 ## School outage ----
 
@@ -120,12 +129,15 @@ if (calculated) {
 }
 
 dfsct <- left_join(dfsc, x)
-
+usa_data_to_join <- 
+  usa_data %>% 
+  dplyr::select(-number_first_reported, -first_case_schools_closures, -population)
+all_data <- bind_rows(usa_data_to_join, dfsct)
 
 ## Filter to relevant days for each country ---
 
 daysAfterSchoolOutageLimit <- 2
-confirmedLimit <- 40 # minimal number of cases for which we start 
+confirmedLimit <- 10 # minimal number of cases for which we start 
 minPopulationLimit <- 1e6
 
 pop <- read_csv("population.csv")
