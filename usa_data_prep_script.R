@@ -1,13 +1,16 @@
-library(readr)
-library(tidyr)
-library(ggplot2)
+# to have this you need to clone next to our repository folder
+# https://github.com/CSSEGISandData/COVID-19
+# they are changing which data they show so update in code 
+# might be needed
 
-
-confirmed <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_confirmed_global.csv")
-deaths <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_deaths_global.csv")
-recovered <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_recovered_global.csv")
+confirmed <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Confirmed_archived_0325.csv")
+deaths <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Deaths_archived_0325.csv")
+recovered <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Recovered_archived_0325.csv")
 
 schools <- read_csv("schools_closing_usa.csv")
+usa_states_codes <- read_csv("usa_states_codes.csv")
+usa_states_population <- read_excel("usa_states_population.xlsx", sheet = 1, 
+                                    na = "NA")
 
 confirmed_usa <- 
   confirmed %>%
@@ -50,6 +53,8 @@ usa_data <-
   left_join(deaths_final) %>%
   left_join(recovered_final)
 
+# do we have all states here? these are missing states
+usa_states_codes$State[!usa_states_codes$State  %in% (usa_data$State %>% unique())]
 # add schools data
 schools_outage <- 
   schools %>% 
@@ -64,8 +69,7 @@ usa_all <-
   filter(!is.na(schoolOutageDate)) %>%
   arrange(State, date) %>%
   group_by(State) %>%
-  mutate(`School outage` = ifelse(date < schoolOutageDate, 0, 1)) %>%
-  mutate(first_case_day = confirmed == 1)
+  mutate(`School outage` = ifelse(date < schoolOutageDate, 0, 1)) 
 
 first_case <-   
   usa_all %>%
@@ -78,13 +82,33 @@ first_case <-
   dplyr::select(State, first_case_day, number_first_reported)
   
 ggplot(first_case, aes(number_first_reported)) +
-  geom_histogram() 
+  geom_histogram() + controls + 
+  ggtitle("USA number of cases reported on first day reported")
 
-usa_data_ready <- 
+
+
+usa_weather_data <- getUSAWeatherData(path_to_data = "temp2020", 
+                              path_to_usa_files_names = "usa_files_names.csv")
+
+
+
+
+# usa_population
+usa_pop <- usa_states_population[9:59, c(1, 13)] 
+colnames(usa_pop) <- c("State", "population")
+
+
+usa_data <- 
   usa_all %>%
-  left_join(first_case) %>%
+  left_join(first_case, by = c("State")) %>%
   mutate(first_case_schools_closures = difftime(schoolOutageDate, first_case_day, 
-                                                units = c("days"))) 
+                                                units = c("days"))) %>%
+  left_join(usa_states_codes, by = "State") %>%
+  left_join(usa_weather_data %>% dplyr::rename(code = state),
+            by = c("date", "code")) %>%
+  left_join(usa_pop, by = c("State")) %>%
+  dplyr::select(Country, State, date, confirmed, deaths, recovered, 
+                `School outage`, schoolOutageDate, code, temp, 
+                number_first_reported, first_case_schools_closures, population)
 
 
-  
