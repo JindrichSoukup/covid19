@@ -3,9 +3,9 @@ library(tidyr)
 library(ggplot2)
 
 
-confirmed <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_19-covid-Confirmed.csv")
-deaths <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_19-covid-Deaths.csv")
-recovered <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_19-covid-Recovered.csv")
+confirmed <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_confirmed_global.csv")
+deaths <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_deaths_global.csv")
+recovered <- read_csv("..\\COVID-19\\csse_covid_19_data\\csse_covid_19_time_series\\time_series_covid19_recovered_global.csv")
 
 schools <- read_csv("schools_closing_usa.csv")
 
