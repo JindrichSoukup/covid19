@@ -7,7 +7,9 @@ confirmed <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_s
 deaths <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Deaths_archived_0325.csv")
 recovered <- read_csv("..\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Recovered_archived_0325.csv")
 
+# taken from https://www.edweek.org/ew/section/multimedia/map-coronavirus-and-school-closures.html 
 schools <- read_csv("schools_closing_usa.csv")
+# taken from https://worldpopulationreview.com/states/state-abbreviations/
 usa_states_codes <- read_csv("usa_states_codes.csv")
 usa_states_population <- read_excel("usa_states_population.xlsx", sheet = 1, 
                                     na = "NA")
@@ -91,12 +93,8 @@ usa_weather_data <- getUSAWeatherData(path_to_data = "temp2020",
                               path_to_usa_files_names = "usa_files_names.csv")
 
 
-
-
-# usa_population
 usa_pop <- usa_states_population[9:59, c(1, 13)] 
 colnames(usa_pop) <- c("State", "population")
-
 
 usa_data <- 
   usa_all %>%
