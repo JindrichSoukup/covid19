@@ -1,0 +1,48 @@
+---
+title: "COVID-19 analysis"
+author: "Jindrich Soukup  and Justina Ivanauskaite"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    fig_caption: yes
+    fig_height: 8
+    fig_width: 10
+    highlight: pygments
+    message: no
+    number_sections: yes
+    toc: yes
+    warnings: no
+  pdf_document:
+    toc: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Data sources
+
+* cases and deaths USA - https://github.com/nytimes/covid-19-data, https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html 
+* cases and deaths world countries - https://pomber.github.io/covid19/
+* schoold closures data usa -   https://www.edweek.org/ew/section/multimedia/map-coronavirus-and-school-closures.html
+* population data 
+* weather data - 
+* 
+
+# Weather data overview
+
+```{r}
+ggplotly(gg_panel_temp_world)
+ggplotly(gg_panel_temp_usa)
+ggplotly(gg_sd_temp_usa)
+ggplotly(gg_sd_temp_world )
+
+
+```
+
+# COVID-19 cases overview
+
+```{r}
+ggplotly(gg_covid_deaths_world)
+ggplotly(gg_covid_deaths_usa)
+
+```
