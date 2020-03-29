@@ -55,6 +55,7 @@ gg_sd_temp_world <-
                 max(all_data$date)))
 
 
+# deaths
 
 gg_covid_deaths_world <- 
   ggplot(all_data %>% filter(Country != "US"), 
@@ -62,9 +63,9 @@ gg_covid_deaths_world <-
   geom_line() +
   theme(legend.position="none") +
   controls +
-  ggtitle("COVID-19 deaths")
+  ggtitle("COVID-19 deaths world")
 
-
+ggplotly(gg_covid_deaths_world)
 
 gg_covid_deaths_usa <- 
   ggplot(all_data %>% filter(Country == "US"), 
@@ -72,7 +73,33 @@ gg_covid_deaths_usa <-
   geom_line() +
   theme(legend.position="none") +
   controls +
-  ggtitle("COVID-19 deaths")
+  ggtitle("COVID-19 deaths USA")
+
+ggplotly(gg_covid_deaths_usa)
+
+
+# cases
+
+gg_covid_cases_world <- 
+  ggplot(all_data %>% filter(Country != "US"), 
+         aes(date, confirmed, colour = Country, group = Country)) +
+  geom_line() +
+  theme(legend.position="none") +
+  controls +
+  ggtitle("COVID-19 confirmed world") 
+
+ggplotly(gg_covid_cases_world)
+
+gg_covid_cases_usa <- 
+  ggplot(all_data %>% filter(Country == "US"), 
+         aes(date, confirmed, colour = State, group = State)) +
+  geom_line() +
+  theme(legend.position="none") +
+  controls +
+  ggtitle("COVID-19 cases USA")
+
+ggplotly(gg_covid_cases_usa)
+
 
 
 rmarkdown::render(

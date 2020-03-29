@@ -45,4 +45,7 @@ ggplotly(gg_sd_temp_world )
 ggplotly(gg_covid_deaths_world)
 ggplotly(gg_covid_deaths_usa)
 
+ggplotly(gg_covid_cases_world)
+ggplotly(gg_covid_cases_usa)
+
 ```

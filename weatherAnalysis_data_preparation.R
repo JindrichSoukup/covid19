@@ -13,8 +13,25 @@ library(readxl)
 
 source("functions.R")
 
-# get USA data with weather
-source("usa_data_prep_script.R")
+# get all usa data takes 3 mins, because of weather
+# to get weather place extracted files to path_to_weather_data 
+# john_hopkins_data   clone https://github.com/CSSEGISandData/COVID-19 to
+# john_hopkins_repo to be next to our repo
+# nytimes_data clone https://github.com/nytimes/covid-19-data.git to 
+# nytimes_repo to be next to our repo  
+# john hopkins repo will be useful in the futuer - they are working
+# to add tests data
+usa_data <- getUSAData(john_hopkins_data = F, 
+                       nytimes_data = T, 
+                       path_nytimes = "..\\nytimes_repo\\covid-19-data\\us-states.csv", 
+                       path_hopkins_confirmed = "..\\john_hopkins_repo\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Confirmed_archived_0325.csv", 
+                       path_hopkins_deaths = "..\\john_hopkins_repo\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Confirmed_archived_0325.csv", 
+                       path_hopkins_deathspath_hopkins_deaths = "..\\john_hopkins_repo\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Recovered_archived_0325.csv",
+                       path_schools_data = "schools_closing_usa.csv", 
+                       path_states_codes = "usa_states_codes.csv", 
+                       path_population = "usa_states_population.xlsx", 
+                       path_to_weather_data = "temp2020//2020//", 
+                       path_to_weather_usa_states_names = "usa_files_names.csv")
 
 ## Get confirmed cases ---
 
