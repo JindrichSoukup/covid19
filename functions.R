@@ -12,7 +12,7 @@ controls <-
         legend.direction = "vertical")
 
 
-getUSAWeatherData <- function(path_to_data, first_time_run = F, 
+getUSAWeatherData <- function(path_to_data,
                               path_to_usa_files_names = "usa_files_names.csv") {
   t1 <- Sys.time()
   # test values
