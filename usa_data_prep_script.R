@@ -1,5 +1,7 @@
-john_hopkins_data <- F
-nytimes_data <- T
+john_hopkins_data <- F # clone https://github.com/CSSEGISandData/COVID-19 to
+# john_hopkins_repo to be next to our repo
+nytimes_data <- T # clone https://github.com/nytimes/covid-19-data.git to 
+# nytimes_repo to be next to our repo 
 
 
 # taken from https://www.edweek.org/ew/section/multimedia/map-coronavirus-and-school-closures.html 
@@ -10,10 +12,6 @@ usa_states_population <- read_excel("usa_states_population.xlsx", sheet = 1,
                                     na = "NA")
 
 if (john_hopkins_data) {
-  # to have this you need to clone next to our repository folder
-  # https://github.com/CSSEGISandData/COVID-19
-  # they are changing which data they show so update in code 
-  # might be needed
   
   confirmed <- read_csv("..\\john_hopkins_repo\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Confirmed_archived_0325.csv")
   deaths <- read_csv("..\\john_hopkins_repo\\COVID-19\\archived_data\\archived_time_series\\time_series_19-covid-Deaths_archived_0325.csv")
@@ -62,7 +60,6 @@ if (john_hopkins_data) {
     left_join(recovered_final)
 }
 
-head(usa_data)
 
 if(nytimes_data) {
   nytimes_dat <- read_csv("..\\nytimes_repo\\covid-19-data\\us-states.csv")
