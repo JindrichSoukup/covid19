@@ -58,36 +58,38 @@ ggplot(df2[4:(dim(df2)[1]), ],
   annotation_logticks() + 
   # Axes labs and title
   ggtitle("") + 
-  xlab("Celkový počet pozitivně testovaných") + 
-  ylab("Počet nově nakažených oproti předchozímu dnu") +
+  xlab("Celkový počet pozitivně diagnostikovaných") + 
+  ylab("Počet nově diagnostikovaných oproti předchozímu dnu") +
   # General appearance
   theme_minimal() +
   theme(axis.text=element_text(size=12*f),
         axis.title=element_text(size=16*f, face="bold")) +
   # New coordinates
-  geom_segment(aes(x = 6, y = 3, xend = 3000, yend = 1500), linetype = 2) + 
+  geom_segment(aes(x = 6, y = 3, xend = 6000, yend = 3000), linetype = 2) + 
   geom_text(aes(x=1250, y=750, label = "50% denní nárůst"), angle=30, size = 5*f) + 
-  geom_segment(aes(x = 6, y = 1.8, xend = 3000, yend = 900), linetype = 3) + 
+  geom_segment(aes(x = 6, y = 1.8, xend = 6000, yend = 1800), linetype = 3) + 
   geom_text(aes(x=1250, y=430, label = "30% denní nárůst"), angle=30, size = 5*f) + 
-  geom_segment(aes(x = 6, y = 1.2, xend = 3000, yend = 600), linetype = 4) + 
+  geom_segment(aes(x = 6, y = 1.2, xend = 6000, yend = 1200), linetype = 4) + 
   geom_text(aes(x=10, y=2.4, label = "20% denní nárůst"), angle=30, size = 5*f) + 
-  geom_segment(aes(x = 6, y = 0.6, xend = 3000, yend = 300), linetype = 5) + 
+  geom_segment(aes(x = 6, y = 0.6, xend = 6000, yend = 600), linetype = 5) + 
   geom_text(aes(x=10, y=1.2, label = "10% denní nárůst"), angle=30, size = 5*f) + 
+  geom_segment(aes(x = 6, y = 0.3, xend = 6000, yend = 300), linetype = 5) + 
+  geom_text(aes(x=10, y=0.6, label = "5% denní nárůst"), angle=30, size = 5*f) + 
   # Countermeasures annotations
   geom_vline(aes(xintercept = 35), linetype = 2, col = "darkblue") + 
-  geom_text(aes(x=35, y=80, label = "Namátkové\n kontroly \nna hranicích"), col = "darkblue", size=5*f) + 
+  geom_text(aes(x=35, y=80, label = "Namátkové\n kontroly \nna hranicích"), col = "darkblue", size = 5*f) + 
   geom_vline(aes(xintercept = 50), linetype = 2, col = "red") + 
-  geom_text(aes(x=50, y=200, label = "Zákaz akcí \ns 100+ lidmi"), col = "darkred", size=5*f) + 
+  geom_text(aes(x=50, y=200, label = "Zákaz akcí \ns 100+ osobami"), col = "darkred", size = 5*f) + 
   geom_vline(aes(xintercept = 75), linetype = 2, col = "darkgreen") + 
-  geom_text(aes(x=75, y=400, label = "Zavřeny\n školy"), col = "darkgreen", size=5*f) + 
+  geom_text(aes(x=75, y=400, label = "Zavřeny\n školy"), col = "darkgreen", size = 5*f) + 
   geom_vline(aes(xintercept = 105), linetype = 2, col = "darkblue") + 
-  geom_text(aes(x=105, y=1200, label = "Stav nouze, \nakce 30+, \n restaurace \njen ve dne"), col = "darkblue", size=5*f) + 
+  geom_text(aes(x=105, y=1200, label = "Nouzový stav, \nzákaz akcí s 30+ osobami, \n restaurace \njen ve dne"), col = "darkblue", size = 5*f) + 
   geom_vline(aes(xintercept = 160), linetype = 2, col = "darkred") + 
-  geom_text(aes(x=160, y=0.9, label = "Zavřeny \nobchody a \nrestaurace"), col = "darkred", size=5*f) + 
+  geom_text(aes(x=160, y=0.9, label = "Zavřeny \nobchody a \nrestaurace"), col = "darkred", size = 5*f) + 
   geom_vline(aes(xintercept = 340), linetype = 2, col = "darkgreen") + 
-  geom_text(aes(x=340, y=2, label = "Karanténa"), col = "darkgreen", size=5*f) + 
+  geom_text(aes(x=340, y=2, label = "Karanténa"), col = "darkgreen", size = 5*f) + 
   geom_vline(aes(xintercept = 810), linetype = 2, col = "darkred") + 
-  geom_text(aes(x=810, y=5, label = "Povinné\n roušky"), col = "darkred", size=5*f)
+  geom_text(aes(x=810, y=5, label = "Povinné\n roušky"), col = "darkred", size = 5*f)
 
 
 dev.off()
